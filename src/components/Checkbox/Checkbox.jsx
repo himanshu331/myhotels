@@ -8,8 +8,9 @@ const arrayList = [];
       super(props);
       console.log("props",props)
       this.state = {
-        checkedHotel: ''
+        checkedHotel: false
       } 
+      this.handleChange = this.handleChange.bind(this)
     }
    
   
