@@ -71,7 +71,8 @@ export class Dashboard extends React.Component {
     newList.push(...hotels)
   }
     return (
-      newList&&newList.forEach((prop, index) => {
+      <div>
+      {newList && newList.forEach((prop, index) => {
         console.log("prop+++++++",prop, index)
         return <div style={{width:"800px",height:"200px",paddingTop:"10px", border: "1px solid grey", marginTop:"2px"}}>
           <div style={{width:"30%",height:"100px",float: "left", paddingLeft:"10px"}}>
@@ -102,6 +103,8 @@ export class Dashboard extends React.Component {
           </div>
           </div>
       })
+    }
+      </div>
     );
   }
 }
