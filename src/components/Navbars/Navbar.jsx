@@ -16,16 +16,7 @@ import RTLNavbarLinks from "./RTLNavbarLinks.jsx";
 import headerStyle from "../../assets/jss/material-dashboard-react/components/headerStyle.jsx";
 
 function Header({ ...props }) {
-  function makeBrand() {
-    var name;
-    props.routes.map((prop, key) => {
-      if (prop.layout + prop.path === props.location.pathname) {
-        name = props.rtlActive ? prop.rtlName : prop.name;
-      }
-      return null;
-    });
-    return name;
-  }
+ 
   const { classes, color } = props;
   const appBarClasses = classNames({
     [" " + classes[color]]: color

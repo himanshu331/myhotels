@@ -17,9 +17,6 @@ import sidebarStyle from "../../assets/jss/material-dashboard-react/components/s
 import CheckboxLabels from "../Checkbox/Checkbox.jsx"
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
-  function activeRoute(routeName) {
-    return props.location.pathname.indexOf(routeName) > -1 ? true : false;
-  }
   const hotel = [
   {type:"5 star",name:"5 star"},
   {type:"4 star", name:"4 star"}, 
@@ -27,7 +24,7 @@ const Sidebar = ({ ...props }) => {
   {hotelType:"Hotel", name:"Hotel"}, 
   {hotelType:"Villa", name:"Villa"}, 
 ]
-  const { classes, color, logo, image, logoText, routes } = props;
+  const { classes, image, logoText } = props;
 
   const handleSelect = (value) =>{
     console.log("value",value)
@@ -37,7 +34,6 @@ const Sidebar = ({ ...props }) => {
     <List className={classes.list}>
       {hotel.map((prop, key) => {
         console.log("prop",prop)
-        var activePro = " ";
         var listItemClasses;
         return (
             <ListItem className={classes.itemLink + listItemClasses}>

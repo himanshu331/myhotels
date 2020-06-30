@@ -39,26 +39,26 @@ export class Dashboard extends React.Component {
     newList.push(...hotels)
   }
 
-  handleChange = (event, value) => {
+  handleChange(event, value){
     this.setState({ value });
   };
 
-  handleChangeIndex = index => {
+  handleChangeIndex(index) {
     this.setState({ value: index });
   };
   render() {
   let selectedList = this.props.listNameFromParent[0]
   let listHotels = []
   if(selectedList && selectedList.length>0){
-  selectedList && selectedList.map(element=>{
-    hotels && hotels.map(hotelElement=>{
+  selectedList && selectedList.forEach(element=>{
+    hotels && hotels.forEach(hotelElement=>{
       console.log("hotelElement",hotelElement)
     if(element === hotelElement.type){
       console.log("element--------",hotelElement)
       newList = []
       listHotels.push(hotelElement)
     }
-    if(element == hotelElement.hotelType){
+    if(element === hotelElement.hotelType){
       newList = []
       listHotels.push(hotelElement)
     }
@@ -71,13 +71,13 @@ export class Dashboard extends React.Component {
     newList.push(...hotels)
   }
     return (
-      newList&&newList.map((prop, index) => {
+      newList&&newList.forEach((prop, index) => {
         console.log("prop+++++++",prop, index)
         return <div style={{width:"800px",height:"200px",paddingTop:"10px", border: "1px solid grey", marginTop:"2px"}}>
           <div style={{width:"30%",height:"100px",float: "left", paddingLeft:"10px"}}>
-            {prop.id===10 || prop.id===3 || prop.id===6 || prop.id===9?<img style={{width:"200px",height:"180px"}} src={image}></img>:''}
-            {prop.id===1 || prop.id===4 || prop.id===7?<img style={{width:"200px",height:"180px"}} src={resortimage}></img>:''}
-            {prop.id===2 || prop.id===5 || prop.id===8?<img style={{width:"200px",height:"180px"}} src={markushotel}></img>:''}
+            {prop.id===10 || prop.id===3 || prop.id===6 || prop.id===9?<img style={{width:"200px",height:"180px"}} alt="image1" src={image}></img>:''}
+            {prop.id===1 || prop.id===4 || prop.id===7?<img style={{width:"200px",height:"180px"}} alt="image11" src={resortimage}></img>:''}
+            {prop.id===2 || prop.id===5 || prop.id===8?<img style={{width:"200px",height:"180px"}} alt="image12" src={markushotel}></img>:''}
           </div>
           <div style={{width:"70%",height:"150px",float: "right"}}>
             <div style={{marginLeft:"20px", height: '120px', width:"180px",float: "left" }}>
@@ -87,9 +87,9 @@ export class Dashboard extends React.Component {
             <span style={{paddingLeft:"20px"}}>{prop.hotelType}</span>
             </div>
             <div style={{marginTop:"10px"}}>
-            {prop.wifi?<img style={{width:"20px"}} src={wifi}></img>:''}
+            {prop.wifi?<img style={{width:"20px"}} alt="imageProp" src={wifi}></img>:''}
               {prop.wifi?<span>{"wifi"}</span>:""}
-              {prop.parking?<img style={{width:"20px", marginLeft:"20px"}} src={garage}></img>:''}
+              {prop.parking?<img style={{width:"20px", marginLeft:"20px"}} alt="imagegarage" src={garage}></img>:''}
               {prop.parking?<span>{"parking"}</span>:""}
             </div>
             </div>

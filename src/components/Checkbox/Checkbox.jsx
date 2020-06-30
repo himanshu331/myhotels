@@ -13,22 +13,19 @@ const arrayList = [];
     }
    
   
-    handleChange = (event) => {
-      const name = event.target.name
+    handleChange(event) {
       console.log("event.target.name",event.target.checked)
       this.setState({checkedHotel: event.target.checked });
       if(event.target.checked){
         arrayList.push(event.target.name)
       }else{
-      arrayList && arrayList.map((e, index)=>{
+      arrayList && arrayList.forEach((e, index)=>{
         if(e === event.target.name){
           console.log("rrrrrrrrrrrr",e)
           arrayList.splice(index, 1);
         }
       })
       }
-      console.log("kkkkkk",event.target.name)
-      console.log("arrayList",arrayList)
       this.props.onSelect(arrayList);        
     };
 
