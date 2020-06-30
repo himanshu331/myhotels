@@ -8,17 +8,15 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Navbar from "components/Navbars/Navbar.jsx";
-import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
+import Navbar from "../components/Navbars/Navbar.jsx";
+import Sidebar from "../components/Sidebar/Sidebar.jsx";
 
-import routes from "routes.js";
+import routes from "../routes.js";
 
-import rtlStyle from "assets/jss/material-dashboard-react/layouts/rtlStyle.jsx";
+import rtlStyle from "../assets/jss/material-dashboard-react/layouts/rtlStyle.jsx";
 
-import image from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
+import image from "../assets/img/sidebar-2.jpg";
+import logo from "../assets/img/reactlogo.png";
 
 const switchRoutes = (
   <Switch>
@@ -118,16 +116,6 @@ class RTL extends React.Component {
           ) : (
             <div className={classes.map}>{switchRoutes}</div>
           )}
-          {this.getRoute() ? <Footer /> : null}
-          <FixedPlugin
-            handleImageClick={this.handleImageClick}
-            handleColorClick={this.handleColorClick}
-            bgColor={this.state["color"]}
-            bgImage={this.state["image"]}
-            handleFixedClick={this.handleFixedClick}
-            fixedClasses={this.state.fixedClasses}
-            rtlActive
-          />
         </div>
       </div>
     );

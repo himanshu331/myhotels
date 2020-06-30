@@ -6,15 +6,14 @@ import { Switch, Route } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // core components
-import AuthNavbar from "components/Navbars/AuthNavbar.jsx";
-import Footer from "components/Footer/AuthFooter.jsx";
+import AuthNavbar from "../components/Navbars/AuthNavbar.jsx";
 
-import routes from "routes.js";
+import routes from "../routes.js";
 
-import pagesStyle from "assets/jss/material-dashboard-react/layouts/authStyle.jsx";
+import pagesStyle from "../assets/jss/material-dashboard-react/layouts/authStyle.jsx";
 
-import register from "assets/img/register.jpeg";
-import login from "assets/img/login.jpeg";
+import register from "../assets/img/register.jpeg";
+import login from "../assets/img/login.jpeg";
 
 const switchRoutes = (
   <Switch>
@@ -66,7 +65,6 @@ class Pages extends React.Component {
             style={{ backgroundImage: "url(" + this.getBgImage() + ")" }}
           >
             {switchRoutes}
-            <Footer white />
           </div>
         </div>
       </div>

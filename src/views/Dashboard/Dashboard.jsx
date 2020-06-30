@@ -1,19 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 // react plugin for creating charts
-import ChartistGraph from "react-chartist";
 // @material-ui/core
 import withStyles from "@material-ui/core/styles/withStyles";
-import image from "assets/img/hotel.jpg";
-import resortimage from "assets/img/anmol-hotel.jpg";
-import markushotel from "assets/img/markus-hotel.jpg";
-import wifi from "assets/img/wifi.png";
-import garage from "assets/img/garage.png";
+import image from "../../assets/img/hotel.jpg";
+import resortimage from "../../assets/img/anmol-hotel.jpg";
+import markushotel from "../../assets/img/markus-hotel.jpg";
+import wifi from "../../assets/img/wifi.png";
+import garage from "../../assets/img/garage.png";
 
 
 
 
-import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
+import dashboardStyle from "../../assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 const hotels = [
   {id:1, name:"Ramaya", location:"delhi", hotelType:"Hotel", type:"3 star", wifi:true, parking: true, price:"8,774"},
   {id:2, name:"Taj", location:"Banglore", hotelType:"Hotel", type:"5 star", wifi:true, parking: true, price:"7,794"},

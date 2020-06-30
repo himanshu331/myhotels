@@ -2,25 +2,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
-import axios from "axios";
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Navbar from "components/Navbars/Navbar.jsx";
-import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
+import Navbar from "../components/Navbars/Navbar.jsx";
+import Sidebar from "../components/Sidebar/Sidebar.jsx";
 import Dashboard from "../views/Dashboard/Dashboard.jsx"
 
-import routes from "routes.js";
+import routes from "../routes.js";
 
-import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
+import dashboardStyle from "../assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
-import image from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
+import image from "../assets/img/sidebar-2.jpg";
+import logo from "../assets/img/reactlogo.png";
 
 const { REACT_APP_SERVER_URL } = process.env;
 let userInfo = {};
@@ -89,21 +86,6 @@ class Dashboard1 extends React.Component {
     window.addEventListener("resize", this.resizeFunction);
 
     let getSessionRequest;
-    // try {
-    //   getSessionRequest = await axios.get(
-    //     `http://${REACT_APP_SERVER_URL}/get-session`,
-    //     {
-    //       withCredentials: true
-    //     }
-    //   );
-    // } catch ({ response }) {
-    //   getSessionRequest = response;
-    // }
-    // const { data: getSessionRequestData } = getSessionRequest;
-    // if (getSessionRequestData.success) {
-    //   return userInfo = getSessionRequestData.userInfo;
-    // }
-    //  history.push("/auth/login-page");
   }
   componentDidUpdate(e) {
     if (e.history.location.pathname !== e.location.pathname) {
@@ -119,26 +101,6 @@ class Dashboard1 extends React.Component {
 
   checkBoxValue = (value) => {
     console.log("valueeeeeeeeeeee",value)
-    // let json = {
-    //   type:'',
-    //   hotelType:''
-    // }
-    // let arr = [];
-    // value && value.map(e=>{
-    //   console.log("e",e)
-    //   if(e=="Hotel"){
-    //     arr.push({hotelType:"Hotel"})
-    //     // arr.push(json)
-    //   }else if(e=="Villa"){
-    //     json.hotelType="Villa"
-    //   }else{
-    //     json.type=e
-    //   }
-    //   arr.push(json)
-
-    //   console.log("json",arr)
-
-    // })
     this.setState({checkedHotels: [value]})
     console.log("checkBoxValue>>>>>>>>",this.state.checkedHotels)
   }
@@ -165,26 +127,9 @@ class Dashboard1 extends React.Component {
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
-          {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-          {/* {this.getRoute() ? (
-            <div className={classes.content}>
-              <div className={classes.container}>{switchRoutes}</div>
-            </div>
-          ) : (
-            <div className={classes.map}>{switchRoutes}</div>
-          )} */}
-          {/* {this.getRoute() ? <Footer /> : null} */}
           {console.log("hhhhhhhhhh",this.state.checkedHotels)}
           <Dashboard listNameFromParent={this.state.checkedHotels}>
           </Dashboard>
-          {/* <FixedPlugin
-            handleImageClick={this.handleImageClick}
-            handleColorClick={this.handleColorClick}
-            bgColor={this.state["color"]}
-            bgImage={this.state["image"]}
-            handleFixedClick={this.handleFixedClick}
-            fixedClasses={this.state.fixedClasses}
-          /> */}
         </div>
       </div>
     );

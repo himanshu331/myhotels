@@ -15,16 +15,12 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
-import Menu from "@material-ui/icons/Menu";
 import PersonAdd from "@material-ui/icons/PersonAdd";
 import Fingerprint from "@material-ui/icons/Fingerprint";
-import LockOpen from "@material-ui/icons/LockOpen";
-import MonetizationOn from "@material-ui/icons/MonetizationOn";
 
 // core components
-import Button from "components/CustomButtons/Button";
 
-import authNavbarStyle from "assets/jss/material-dashboard-react/components/authNavbarStyle.jsx";
+import authNavbarStyle from "../../assets/jss/material-dashboard-react/components/authNavbarStyle.jsx";
 
 class AuthNavbar extends React.Component {
   constructor(props) {
@@ -99,21 +95,21 @@ class AuthNavbar extends React.Component {
         <Toolbar className={classes.container}>
           <Hidden smDown>
             <div className={classes.flex}>
-              <Button href="#" className={classes.title} color="transparent">
+              {/* <Button href="#" className={classes.title} color="transparent">
                 {brandText}
-              </Button>
+              </Button> */}
             </div>
           </Hidden>
           <Hidden mdUp>
             <div className={classes.flex}>
-              <Button href="#" className={classes.title} color="transparent">
+              {/* <Button href="#" className={classes.title} color="transparent">
                 MD Pro React
-              </Button>
+              </Button> */}
             </div>
           </Hidden>
           <Hidden smDown>{list}</Hidden>
           <Hidden mdUp>
-            <Button
+            {/* <Button
               className={classes.sidebarButton}
               color="transparent"
               justIcon
@@ -121,7 +117,7 @@ class AuthNavbar extends React.Component {
               onClick={this.handleDrawerToggle}
             >
               <Menu />
-            </Button>
+            </Button> */}
           </Hidden>
           <Hidden mdUp>
             <Hidden mdUp>

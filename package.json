@@ -49,7 +49,7 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/material-dashboard-react-nodejs/issues"
   },
-  "homepage": "https://github.com/himanshu331/myhotels.git/",
+  "homepage": "/",
   "optionalDependencies": {
     "@types/googlemaps": "3.30.16",
     "@types/markerclustererplus": "2.1.33",
