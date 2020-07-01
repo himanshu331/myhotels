@@ -10,16 +10,16 @@ import wifi from "../../assets/img/wifi.png";
 import garage from "../../assets/img/garage.png";
 import dashboardStyle from "../../assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 const hotels = [
-  { id: 1, name: "Ramaya", location: "delhi", hotelType: "Hotel", type: "3 star", wifi: true, parking: true, price: "8,774" },
-  { id: 2, name: "Taj", location: "Banglore", hotelType: "Hotel", type: "5 star", wifi: true, parking: true, price: "7,794" },
-  { id: 3, name: "Golden Tulip", location: "Gurgaon", hotelType: "Villa", type: "4 star", wifi: true, parking: false, price: "9,999" },
-  { id: 4, name: "Lemon Tree", location: "Goa", hotelType: "Hotel", type: "4 star", wifi: false, parking: true, price: "5,999" },
-  { id: 5, name: "Hotel Royal", location: "paundechery", hotelType: "Hotel", type: "5 star", wifi: true, parking: true, price: "8,599" },
-  { id: 6, name: "Vivanta", location: "Gurgaon", hotelType: "Hotel", type: "4 star", wifi: false, parking: true, price: "6,999" },
-  { id: 7, name: "Urja Resort", location: "pune", hotelType: "Villa", type: "5 star", wifi: true, parking: true, price: "4,999" },
-  { id: 8, name: "Hotel Campal", location: "Hydrebad", hotelType: "Hotel", type: "3 star", wifi: false, parking: true, price: "10,999" },
-  { id: 9, name: "Hotel City Comfort", location: "Delhi", hotelType: "Hotel", type: "3 star", wifi: true, parking: true, price: "4,999" },
-  { id: 10, name: "Grand Vatika Resort", location: "Gurgaon", hotelType: "Villa", type: "4 star", wifi: true, parking: true, price: "6,899" },
+  { id: 1, name: "Ramaya", location: "delhi", hotelType: "Hotel", type: "3 star", wifi: "Wifi", parking: "Parking", price: "8774" },
+  { id: 2, name: "Taj", location: "Banglore", hotelType: "Hotel", type: "5 star", wifi: "", parking: "Parking", price: "7794" },
+  { id: 3, name: "Golden Tulip", location: "Gurgaon", hotelType: "Villa", type: "4 star", wifi: "Wifi", parking: "", price: "9999" },
+  { id: 4, name: "Lemon Tree", location: "Goa", hotelType: "Hotel", type: "4 star", wifi: "Wifi", parking: "Parking", price: "5999" },
+  { id: 5, name: "Hotel Royal", location: "paundechery", hotelType: "Hotel", type: "5 star", wifi: "", parking: "Parking", price: "8599" },
+  { id: 6, name: "Vivanta", location: "Gurgaon", hotelType: "Hotel", type: "4 star", wifi: "Wifi", parking: "Parking", price: "6999" },
+  { id: 7, name: "Urja Resort", location: "pune", hotelType: "Villa", type: "5 star", wifi: "Wifi", parking: "", price: "4999" },
+  { id: 8, name: "Hotel Campal", location: "Hydrebad", hotelType: "Hotel", type: "3 star", wifi: "", parking: "Parking", price: "10999" },
+  { id: 9, name: "Hotel City Comfort", location: "Delhi", hotelType: "Hotel", type: "3 star", wifi: "Wifi", parking: "Parking", price: "4999" },
+  { id: 10, name: "Grand Vatika Resort", location: "Gurgaon", hotelType: "Villa", type: "4 star", wifi: "Wifi", parking: "Parking", price: "6899" },
 ]
 let newList = [];
 
@@ -43,23 +43,48 @@ export class Dashboard extends React.Component {
   };
   render() {
     let selectedList = this.props.listNameFromParent[0]
-    let listHotels = []
+    console.log("selectedList",selectedList)
+    console.log("selectedList",selectedList)
     if (selectedList && selectedList.length > 0) {
-      selectedList && selectedList.forEach(element => {
-        hotels && hotels.forEach(hotelElement => {
-          console.log("hotelElement", hotelElement)
-          if (element === hotelElement.type) {
-            console.log("element--------", hotelElement)
-            newList = []
-            listHotels.push(hotelElement)
-          }
-          if (element === hotelElement.hotelType) {
-            newList = []
-            listHotels.push(hotelElement)
-          }
+      newList = []
+      let listt = []
+      hotels && hotels.forEach(hotel=>{
+        let found = true;
+        const keys = Object.keys(hotel);
+        const values = keys.map(key=>{
+          return hotel[key];
         })
+        selectedList.forEach(list=>{
+          console.log("list",list)
+          newList = []
+          if(typeof list !== 'number'){
+          if(!values.includes(list)){
+            console.log("false")
+            found = false;
+          }else{
+            console.log("true")
+            found = true
+          }
+        }else{
+          console.log("else")
+          if(list>=parseInt(hotel.price)){
+            found = true
+          }else{
+            found = false;
+          }
+        }
+        console.log("found",found)
+        if(found)
+          listt.push(hotel)
+        })
+        console.log("found",found)
+        // if(found)
+        //   listt.push(hotel)
       })
-      newList.push(...listHotels)
+      console.log("list",listt)
+      console.log("hotels",hotels)
+      newList.push(...listt)
+      console.log("newList",newList)
     } else {
       newList = []
       newList.push(...hotels)
@@ -75,15 +100,15 @@ export class Dashboard extends React.Component {
             </div>
             {console.log("========================", prop.type)}
             <div style={{ width: "70%", height: "150px", float: "right" }}>
-              <div style={{ marginLeft: "20px", height: '120px', width: "180px", float: "left" }}>
-                <h4>{prop.name}</h4>
+              <div style={{ marginLeft: "20px", height: '120px', width: "350px", textAlign:"center", float: "left" }}>
+                <h4 style={{ color: "green"}}><b>{prop.name}</b></h4>
                 <div>
                   <span>{prop.type}</span>
                   <span style={{ paddingLeft: "20px" }}>{prop.hotelType}</span>
                 </div>
                 <div style={{ marginTop: "10px" }}>
-                  {prop.wifi ? <img style={{ width: "20px" }} alt="imageProp" src={wifi}></img> : ''}
-                  {prop.wifi ? <span>{"wifi"}</span> : ""}
+                  {prop.wifi === "Wifi" ? <img style={{ width: "20px" }} alt="imageProp" src={wifi}></img> : ''}
+                  {prop.wifi === "Wifi" ? <span>{"wifi"}</span> : ""}
                   {prop.parking ? <img style={{ width: "20px", marginLeft: "20px" }} alt="image2" src={garage}></img> : ''}
                   {prop.parking ? <span>{"parking"}</span> : ""}
                 </div>
