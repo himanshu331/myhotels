@@ -21,7 +21,6 @@ const hotels = [
   { id: 9, name: "Hotel City Comfort", location: "Delhi", hotelType: "Hotel", type: "3 star", wifi: "Wifi", parking: "Parking", price: "4999" },
   { id: 10, name: "Grand Vatika Resort", location: "Gurgaon", hotelType: "Villa", type: "4 star", wifi: "Wifi", parking: "Parking", price: "6899" },
   { id: 11, name: "Hotel Grand Heart", location: "Pune", hotelType: "Villa", type: "3 star", wifi: "Wifi", parking: "Parking", price: "7899" },
-
 ]
 let newList = [];
 
@@ -33,7 +32,7 @@ export class Dashboard extends React.Component {
       value: 0,
       hotelList: []
     }
-    newList=[...hotels]
+    newList = [...hotels]
   }
 
   handleChange(event, value) {
@@ -45,179 +44,182 @@ export class Dashboard extends React.Component {
   };
   render() {
     let selectedList = this.props.listNameFromParent[0]
-    console.log("selectedList",selectedList)
+    console.log("selectedList", selectedList)
     let found = true;
     let selectCategory = true;
     let hotelRangeList = [];
-    if (selectedList && ((selectedList.starCategory && selectedList.starCategory.length > 0) || (selectedList.propertyCategory&&selectedList.propertyCategory.length > 0 ))) {
+    if (selectedList && ((selectedList.starCategory && selectedList.starCategory.length > 0) || (selectedList.propertyCategory && selectedList.propertyCategory.length > 0))) {
+      console.log("if")
       let listt = []
       let propertyCategoryList = [];
-      console.log("========hotel======",hotels)
-      hotels && hotels.forEach(hotel=>{
+      console.log("========hotel======", hotels)
+      hotels && hotels.forEach(hotel => {
         const keys = Object.keys(hotel);
-        const values = keys.map(key=>{
+        const values = keys.map(key => {
           return hotel[key];
         })
-        if(selectedList.starCategory && selectedList.starCategory.length>0){
+        if (selectedList.starCategory && selectedList.starCategory.length > 0) {
           selectCategory = false;
           newList = [];
           console.log("starCategory")
-        selectedList.starCategory.forEach(list=>{
-          newList = []
-          if(typeof list !== 'number'){
-          if(!values.includes(list)){
-            // console.log("false")
-            found = false;
-          }
-          else{
-            console.log("true")
-            found = true
-          }
-        }else{
-          // console.log("else")
-          if(list<=parseInt(hotel.price)){
-            found = true
-          }else{
-            found = false;
-          }
-        }
-        if(found){
-          listt.push(hotel)
-      console.log("list",listt)
-        }
+          selectedList.starCategory.forEach(list => {
+            newList = []
+            if (typeof list !== 'number') {
+              if (!values.includes(list)) {
+                // console.log("false")
+                found = false;
+              }
+              else {
+                console.log("true")
+                found = true
+              }
+            } else {
+              // console.log("else")
+              if (list <= parseInt(hotel.price)) {
+                found = true
+              } else {
+                found = false;
+              }
+            }
+            if (found) {
+              listt.push(hotel)
+              console.log("list", listt)
+            }
 
-        })
-      }
-    })
-    newList=[...listt]
-    if(selectedList.propertyCategory && selectedList.propertyCategory.length>0){
-      newList = [];
-        if(selectCategory === false){
-          listt && listt.forEach(hotel=>{
+          })
+        }
+      })
+      newList = [...listt]
+      if (selectedList.propertyCategory && selectedList.propertyCategory.length > 0) {
+        newList = [];
+        if (selectCategory === false) {
+          listt && listt.forEach(hotel => {
             let found = true;
             const keys = Object.keys(hotel);
-            const values = keys.map(key=>{
+            const values = keys.map(key => {
               return hotel[key];
             })
-          selectedList.propertyCategory.forEach(list=>{
-            // console.log("list",list)
-            newList = []
-            if(typeof list !== 'number'){
-            if(!values.includes(list)){
-              // console.log("false")
-              found = false;
-            }
-            else{
-              console.log("true")
-              found = true
-            }
-          }else{
-            // console.log("else")
-            if(list<=parseInt(hotel.price)){
-              found = true
-            }else{
-              found = false;
-            }
-          }
-          if(found){
-            propertyCategoryList.push(hotel)
-        console.log("list",propertyCategoryList)
-          }
-  
-          })
-        })
-        }else{
-          hotels && hotels.forEach(hotel=>{
-            const keys = Object.keys(hotel);
-            const values = keys.map(key=>{
-              return hotel[key];
-            })
-          selectedList.propertyCategory.forEach(list=>{
-            // console.log("list",list)
-            newList = []
-            if(typeof list !== 'number'){
-            if(!values.includes(list)){
-              // console.log("false")
-              found = false;
-            }
-            else{
-              console.log("true")
-              found = true
-            }
-          }else{
-            // console.log("else")
-            if(list<=parseInt(hotel.price)){
-              found = true
-            }else{
-              found = false;
-            }
-          }
-          if(found){
-            propertyCategoryList.push(hotel)
-        console.log("list",listt)
-          }
-  
-          })
-        })
-        }
-        newList=[...propertyCategoryList]
+            selectedList.propertyCategory.forEach(list => {
+              // console.log("list",list)
+              if (typeof list !== 'number') {
+                if (!values.includes(list)) {
+                  // console.log("false")
+                  found = false;
+                }
+                else {
+                  console.log("true")
+                  found = true
+                }
+              } else {
+                // console.log("else")
+                if (list <= parseInt(hotel.price)) {
+                  found = true
+                } else {
+                  found = false;
+                }
+              }
+              if (found) {
+                propertyCategoryList.push(hotel)
+                console.log("list", propertyCategoryList)
+              }
 
+            })
+          })
+        } else {
+          hotels && hotels.forEach(hotel => {
+            const keys = Object.keys(hotel);
+            const values = keys.map(key => {
+              return hotel[key];
+            })
+            selectedList.propertyCategory.forEach(list => {
+              // console.log("list",list)
+              newList = []
+              if (typeof list !== 'number') {
+                if (!values.includes(list)) {
+                  // console.log("false")
+                  found = false;
+                }
+                else {
+                  console.log("true")
+                  found = true
+                }
+              } else {
+                // console.log("else")
+                if (list <= parseInt(hotel.price)) {
+                  found = true
+                } else {
+                  found = false;
+                }
+              }
+              if (found) {
+                propertyCategoryList.push(hotel)
+                console.log("list", listt)
+              }
+
+            })
+          })
+        }
+        newList = [...propertyCategoryList]
+
+      }
+
+      if (selectedList.facility && selectedList.facility.length > 0) {
       }
 
       // console.log("hotels",hotels)
-      console.log("newList",newList)
-    }else if(selectedList && selectedList.length>0 && selectedList[0]!==0){
-      hotels && hotels.forEach(hotel=>{
-        selectedList.forEach(list=>{
-          if(list<=parseInt(hotel.price)){
+      console.log("newList", newList)
+    } else if (selectedList && selectedList.priceRange && selectedList.priceRange.length > 0) {
+      console.log("else if")
+      hotels && hotels.forEach(hotel => {
+        selectedList.priceRange.forEach(list => {
+          if (list <= parseInt(hotel.price)) {
             found = true
-          }else{
+          } else {
             found = false;
           }
-          if(found){
+          if (found) {
             hotelRangeList.push(hotel)
           }
         })
       })
-      newList=[...hotelRangeList]
+      newList = [...hotelRangeList]
     }
 
     else {
-      // newList = []
-      newList=[...hotels] 
-       }
-    return ( <div>
+      newList = [...hotels]
+    }
+    return (<div>
       {newList && newList.map((prop, index) => {
-          // console.log("prop+++++++", prop, index)
-          return (<div style={{ width: "1000px", height: "200px", paddingTop: "10px", border: "1px solid grey", marginTop: "2px"}}>
-            <div style={{ width: "30%", height: "100px", float: "left", paddingLeft: "10px" }}>
-              {prop.id === 10 || prop.id === 3 || prop.id === 6 || prop.id === 9 ? <img style={{ width: "200px", height: "180px" }} alt="image1" src={image}></img> : ''}
-              {prop.id === 1 || prop.id === 4 || prop.id === 7 || prop.id === 11? <img style={{ width: "200px", height: "180px" }} alt="image11" src={resortimage}></img> : ''}
-              {prop.id === 2 || prop.id === 5 || prop.id === 8 ? <img style={{ width: "200px", height: "180px" }} alt="image12" src={markushotel}></img> : ''}
-            </div>
-            {/* {console.log("========================", prop.type)} */}
-            <div style={{ width: "70%", height: "150px", float: "right" }}>
-              <div style={{ marginLeft: "20px", height: '120px', width: "350px", textAlign:"center", float: "left" }}>
-                <h4 style={{ color: "green"}}><b>{prop.name}</b></h4>
-                <div>
-                  <span>{prop.type}</span>
-                  <span style={{ paddingLeft: "20px" }}>{prop.hotelType}</span>
-                </div>
-                <div style={{ marginTop: "10px" }}>
-                  {prop.wifi === "Wifi" ? <img style={{ width: "20px" }} alt="imageProp" src={wifi}></img> : ''}
-                  {prop.wifi === "Wifi" ? <span>{"wifi"}</span> : ""}
-                  {prop.parking ? <img style={{ width: "20px", marginLeft: "20px" }} alt="image2" src={garage}></img> : ''}
-                  {prop.parking ? <span>{"parking"}</span> : ""}
-                </div>
+        // console.log("prop+++++++", prop, index)
+        return (<div style={{ width: "1000px", height: "200px", paddingTop: "10px", border: "1px solid grey", marginTop: "2px" }}>
+          <div style={{ width: "30%", height: "100px", float: "left", paddingLeft: "10px" }}>
+            {prop.id === 10 || prop.id === 3 || prop.id === 6 || prop.id === 9 ? <img style={{ width: "200px", height: "180px" }} alt="image1" src={image}></img> : ''}
+            {prop.id === 1 || prop.id === 4 || prop.id === 7 || prop.id === 11 ? <img style={{ width: "200px", height: "180px" }} alt="image11" src={resortimage}></img> : ''}
+            {prop.id === 2 || prop.id === 5 || prop.id === 8 ? <img style={{ width: "200px", height: "180px" }} alt="image12" src={markushotel}></img> : ''}
+          </div>
+          {/* {console.log("========================", prop.type)} */}
+          <div style={{ width: "70%", height: "150px", float: "right" }}>
+            <div style={{ marginLeft: "20px", height: '120px', width: "350px", textAlign: "center", float: "left" }}>
+              <h4 style={{ color: "green" }}><b>{prop.name}</b></h4>
+              <div>
+                <span>{prop.type}</span>
+                <span style={{ paddingLeft: "20px" }}>{prop.hotelType}</span>
               </div>
-              <div style={{ width: "140px", height: '180px', float: "right", backgroundColor: "lightgrey", textAlign: "center" }}>
-                <h5 ><b>INR{prop.price}</b></h5>
-                <span>per night</span>
+              <div style={{ marginTop: "10px" }}>
+                {prop.wifi === "Wifi" ? <img style={{ width: "20px" }} alt="imageProp" src={wifi}></img> : ''}
+                {prop.wifi === "Wifi" ? <span>{"wifi"}</span> : ""}
+                {prop.parking ? <img style={{ width: "20px", marginLeft: "20px" }} alt="image2" src={garage}></img> : ''}
+                {prop.parking ? <span>{"parking"}</span> : ""}
               </div>
             </div>
-          </div>)
-        })}
-        </div>
+            <div style={{ width: "140px", height: '180px', float: "right", backgroundColor: "lightgrey", textAlign: "center" }}>
+              <h5 ><b>INR{prop.price}</b></h5>
+              <span>per night</span>
+            </div>
+          </div>
+        </div>)
+      })}
+    </div>
     );
   }
 }
