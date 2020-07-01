@@ -3,10 +3,10 @@ import React from "react";
 import { useRanger } from "react-ranger";
 
 export default function App({onChildClick}) {
-  const [values, setValues] = React.useState([4999]);
+  const [values, setValues] = React.useState([0]);
 
   const { getTrackProps, handles } = useRanger({
-    min: 4999,
+    min: 0,
     max: 10000,
     stepSize: 500,
     values,

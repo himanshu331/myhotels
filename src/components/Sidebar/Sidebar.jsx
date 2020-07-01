@@ -24,8 +24,8 @@ const Sidebar = ({ ...props }) => {
     { type: "3 star", name: "3 star" },
     { hotelType: "Hotel", name: "Hotel", category: "Property Category" },
     { hotelType: "Villa", name: "Villa" },
-    { facility: "Wifi", name: "Wifi", category: "Facility" },
-    { facility: "Parking", name: "Parking" }
+    // { facility: "Wifi", name: "Wifi", category: "Facility" },
+    // { facility: "Parking", name: "Parking" }
   ]
   const { classes, image, logoText } = props;
 
@@ -46,7 +46,7 @@ const Sidebar = ({ ...props }) => {
         return (
           <div>
             {prop.ranger ? <Ranger show={true} onChildClick={handleChildClick}></Ranger> : ''}
-            {prop.ranger ? <span style={{marginLeft: "30px", color:"white"}}>{values}</span>:''}
+            {prop.ranger ? <div style={{width:"100%"}}> <span style={{marginLeft: "30px", color:"white", width:"50%"}}>INR {values}</span><span style={{marginLeft:"55px",color:"white", width:"50%"}}>INR 10000</span></div>:<span style={{height:"50px"}}></span>}
             {prop.category ? <div style={{ color: "gold", marginLeft: "30px", height: "35px", marginTop: "10px" }}>
               <b></b>{prop.category ? <span style={{}}
               >{prop.category}</span> : ''}
