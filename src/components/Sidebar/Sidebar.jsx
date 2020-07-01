@@ -24,9 +24,15 @@ const Sidebar = ({ ...props }) => {
     { type: "3 star", name: "3 star" },
     { hotelType: "Hotel", name: "Hotel", category: "Property Category" },
     { hotelType: "Villa", name: "Villa" },
-    // { facility: "Wifi", name: "Wifi", category: "Facility" },
-    // { facility: "Parking", name: "Parking" }
+    { facility: "Wifi", name: "Wifi", category: "Facility" },
+    { facility: "Parking", name: "Parking" }
   ]
+  const arrayList = {
+    starCategory: [],
+    propertyCategory: [],
+    facility: [],
+    priceRange: []
+  };
   const { classes, image, logoText } = props;
 
   const handleSelect = (value) => {
@@ -37,7 +43,8 @@ const Sidebar = ({ ...props }) => {
   const handleChildClick = (value) =>{
     setValues(value)
     console.log("handleChildClick",value)
-    props.handleSelect(value);
+    arrayList.priceRange.push(value)
+    props.handleSelect(arrayList);
   }
   var links = (
     <List className={classes.list}>

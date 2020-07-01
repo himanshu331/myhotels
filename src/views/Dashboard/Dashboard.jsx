@@ -48,7 +48,7 @@ export class Dashboard extends React.Component {
     let found = true;
     let selectCategory = true;
     let hotelRangeList = [];
-    if (selectedList && ((selectedList.starCategory && selectedList.starCategory.length > 0) || (selectedList.propertyCategory && selectedList.propertyCategory.length > 0))) {
+    if (selectedList && ((selectedList.starCategory && selectedList.starCategory.length > 0) || (selectedList.propertyCategory && selectedList.propertyCategory.length > 0) || (selectedList.facility && selectedList.facility.length > 0))) {
       console.log("if")
       let listt = []
       let propertyCategoryList = [];
@@ -163,8 +163,32 @@ export class Dashboard extends React.Component {
 
       }
 
-      if (selectedList.facility && selectedList.facility.length > 0) {
+      if (selectedList && selectedList.facility && selectedList.facility.length > 0) {
+        console.log("facility")
+        newList && newList.forEach(hotel => {
+          const keys = Object.keys(hotel);
+          const values = keys.map(key => {
+            return hotel[key];
+          })
+          selectedList.facility.forEach(list => {
+            if (!values.includes(list)) {
+              // console.log("false")
+              found = false;
+            }
+            else {
+              console.log("true")
+              found = true
+            }
+            if (found) {
+              hotelRangeList.push(hotel)
+              console.log("list", listt)
+            }
+          })
+        })
+        newList = [...hotelRangeList]
       }
+
+      // }
 
       // console.log("hotels",hotels)
       console.log("newList", newList)
