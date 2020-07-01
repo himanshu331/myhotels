@@ -48,7 +48,8 @@ export class Dashboard extends React.Component {
     console.log("selectedList",selectedList)
     let found = true;
     let selectCategory = true;
-    if (selectedList && (selectedList.starCategory.length > 0 || selectedList.propertyCategory.length > 0)) {
+    let hotelRangeList = [];
+    if (selectedList && (selectedList.starCategory && selectedList.starCategory.length > 0 || selectedList.propertyCategory&&selectedList.propertyCategory.length > 0 )) {
       let listt = []
       let propertyCategoryList = [];
       console.log("========hotel======",hotels)
@@ -165,7 +166,28 @@ export class Dashboard extends React.Component {
 
       // console.log("hotels",hotels)
       console.log("newList",newList)
-    } else {
+    }else if(selectedList && selectedList.length>0 && selectedList[0]!==0){
+      console.log("else if")
+      hotels && hotels.forEach(hotel=>{
+        const keys = Object.keys(hotel);
+        const values = keys.map(key=>{
+          return hotel[key];
+        })
+        selectedList.forEach(list=>{
+          if(list<=parseInt(hotel.price)){
+            found = true
+          }else{
+            found = false;
+          }
+          if(found){
+            hotelRangeList.push(hotel)
+          }
+        })
+      })
+      newList=[...hotelRangeList]
+    }
+
+    else {
       // newList = []
       newList=[...hotels] 
        }
