@@ -31,7 +31,7 @@ const switchRoutes = (
             path={prop.layout + prop.path}
             component={props => {
               const Component = prop.component;
-              return <Component {...props} {...userInfo}/>
+              return <Component {...props} {...userInfo} />
             }}
             key={key}
           />
@@ -50,7 +50,7 @@ class Dashboard1 extends React.Component {
       hasImage: true,
       fixedClasses: "dropdown show",
       mobileOpen: false,
-      checkedHotels: []    
+      checkedHotels: []
     };
   }
   handleImageClick = image => {
@@ -90,9 +90,6 @@ class Dashboard1 extends React.Component {
   componentDidUpdate(e) {
     if (e.history.location.pathname !== e.location.pathname) {
       this.refs.mainPanel.scrollTop = 0;
-      // if (this.state.mobileOpen) {
-        // this.setState({ mobileOpen: false });
-      // }
     }
   }
   componentWillUnmount() {
@@ -100,9 +97,7 @@ class Dashboard1 extends React.Component {
   }
 
   checkBoxValue = (value) => {
-    console.log("valueeeeeeeeeeee",value)
-    this.setState({checkedHotels: [value]})
-    console.log("checkBoxValue>>>>>>>>",this.state.checkedHotels)
+    this.setState({ checkedHotels: [value] })
   }
 
   render() {
@@ -127,7 +122,6 @@ class Dashboard1 extends React.Component {
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
-          {console.log("hhhhhhhhhh",this.state.checkedHotels)}
           <Dashboard listNameFromParent={this.state.checkedHotels}>
           </Dashboard>
         </div>

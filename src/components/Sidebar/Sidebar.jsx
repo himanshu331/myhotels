@@ -36,24 +36,21 @@ const Sidebar = ({ ...props }) => {
   const { classes, image, logoText } = props;
 
   const handleSelect = (value) => {
-    console.log("value", value)
     props.handleSelect(value);
   }
 
-  const handleChildClick = (value) =>{
+  const handleChildClick = (value) => {
     setValues(value)
-    console.log("handleChildClick",value)
     arrayList.priceRange.push(value)
     props.handleSelect(arrayList);
   }
   var links = (
     <List className={classes.list}>
       {hotel.map((prop, key) => {
-        console.log("prop", prop)
         return (
           <div>
             {prop.ranger ? <Ranger show={true} onChildClick={handleChildClick}></Ranger> : ''}
-            {prop.ranger ? <div style={{width:"100%"}}> <span style={{marginLeft: "30px", color:"white", width:"50%"}}>INR {values}</span><span style={{marginLeft:"55px",color:"white", width:"50%"}}>INR 10000</span></div>:<span style={{height:"50px"}}></span>}
+            {prop.ranger ? <div style={{ width: "100%" }}> <span style={{ marginLeft: "30px", color: "white", width: "50%" }}>INR {values}</span><span style={{ marginLeft: "55px", color: "white", width: "50%" }}>INR 10000</span></div> : <span style={{ height: "50px" }}></span>}
             {prop.category ? <div style={{ color: "gold", marginLeft: "30px", height: "35px", marginTop: "10px" }}>
               <b></b>{prop.category ? <span style={{}}
               >{prop.category}</span> : ''}
@@ -73,8 +70,8 @@ const Sidebar = ({ ...props }) => {
   var brand = (
     <div className={classes.logo}>
       <span className={classNames(classes.logoLink, {
-          [classes.logoLinkRTL]: props.rtlActive
-        })}>        
+        [classes.logoLinkRTL]: props.rtlActive
+      })}>
         {logoText}
       </span>
     </div>

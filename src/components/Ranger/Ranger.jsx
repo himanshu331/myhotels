@@ -2,7 +2,7 @@
 import React from "react";
 import { useRanger } from "react-ranger";
 
-export default function App({onChildClick}) {
+export default function App({ onChildClick }) {
   const [values, setValues] = React.useState([0]);
 
   const { getTrackProps, handles } = useRanger({
@@ -14,15 +14,16 @@ export default function App({onChildClick}) {
   });
 
   function handleClick(event) {
-      // console.log("kkkkkkkkkkk",event)
-      setValues(event)
-      onChildClick(event); // pass any argument to the callback
+    setValues(event)
+    onChildClick(event); // pass any argument to the callback
   }
 
   return (
-    <div style={{color:"gold",height: "70px",
-    width: "185px",
-    marginLeft: "30px"}}>
+    <div style={{
+      color: "gold", height: "70px",
+      width: "185px",
+      marginLeft: "30px"
+    }}>
       <span >Price Range</span>
       <br />
       <br />
